@@ -77,11 +77,11 @@ public class NFDanfeReport {
     		throws IOException, WriterException, JRException, ParserConfigurationException, SAXException {
     	
     	try (InputStream in = NFDanfeReport.class.getClassLoader().getResourceAsStream("danfe/DANFE_NFCE.jasper");
-    		 InputStream subItens = NFDanfeReport.class.getClassLoader().getResourceAsStream("danfe/DANFE_NFCE_ITENS.jasper");
+//    		 InputStream subItens = NFDanfeReport.class.getClassLoader().getResourceAsStream("danfe/DANFE_NFCE_ITENS.jasper");
     		 InputStream subPagamentos = NFDanfeReport.class.getClassLoader().getResourceAsStream("danfe/DANFE_NFCE_PAGAMENTOS.jasper")) {
     		
     		Map<String, Object> parameters = new HashMap<>();
-    		parameters.put("SUBREL", subItens);
+//    		parameters.put("SUBREL", subItens);
     		parameters.put("SUBREL_PAGAMENTOS", subPagamentos);
     		parameters.put("PAGAMENTOS", pgtos);
     		parameters.put("QR_CODE", gerarQRCode(qrCode));

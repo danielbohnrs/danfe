@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.4.final using JasperReports Library version 6.0.4  -->
-<!-- 2018-10-31T11:45:35 -->
+<!-- 2018-11-01T12:13:07 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DANFE_NFCE_ITENS" pageWidth="200" pageHeight="400" columnWidth="200" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="def12f58-2365-42c2-bbb8-a546db192e3e">
 	<property name="ireport.zoom" value="6.0"/>
 	<property name="ireport.x" value="0"/>
@@ -14,22 +14,22 @@
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
-	<field name="produto.codigo" class="java.lang.String">
+	<field name="codigo" class="java.lang.String">
 		<fieldDescription><![CDATA[prod/cProd]]></fieldDescription>
 	</field>
-	<field name="produto.descricao" class="java.lang.String">
+	<field name="descricao" class="java.lang.String">
 		<fieldDescription><![CDATA[prod/xProd]]></fieldDescription>
 	</field>
-	<field name="produto.valorTotalBruto" class="java.lang.String">
+	<field name="valorTotalBruto" class="java.lang.String">
 		<fieldDescription><![CDATA[prod/vProd]]></fieldDescription>
 	</field>
-	<field name="produto.valorUnitario" class="java.lang.String">
+	<field name="valorUnitario" class="java.lang.String">
 		<fieldDescription><![CDATA[prod/vUnCom]]></fieldDescription>
 	</field>
-	<field name="produto.unidadeComercial" class="java.lang.String">
+	<field name="unidadeComercial" class="java.lang.String">
 		<fieldDescription><![CDATA[prod/uCom]]></fieldDescription>
 	</field>
-	<field name="produto.quantidadeComercial" class="java.lang.String">
+	<field name="quantidadeComercial" class="java.lang.String">
 		<fieldDescription><![CDATA[prod/qCom]]></fieldDescription>
 	</field>
 	<background>
@@ -112,7 +112,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Top" markup="none">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new BigDecimal($F{produto.valorTotalBruto})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new BigDecimal($F{valorTotalBruto})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement key="textField" positionType="Float" x="0" y="0" width="20" height="8" uuid="c4fb7590-7e95-4064-b7b4-df0970be1413">
@@ -121,7 +121,7 @@
 				<textElement verticalAlignment="Top" markup="none">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{produto.codigo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
 				<reportElement key="textField" positionType="Float" x="20" y="0" width="98" height="8" uuid="7af8d86f-7841-4d88-930e-8908bddcea5d">
@@ -130,7 +130,7 @@
 				<textElement verticalAlignment="Top" markup="none">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{produto.descricao}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="">
 				<reportElement key="textField" positionType="Float" x="118" y="0" width="13" height="8" uuid="cb95160d-70b9-4bda-bf6d-8d8c35ac482d">
@@ -141,7 +141,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Top" markup="none">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{produto.quantidadeComercial}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{quantidadeComercial}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="">
 				<reportElement key="textField" positionType="Float" x="131" y="0" width="10" height="8" uuid="528bbe54-36f7-4f3c-87c8-5d5e07f6b5c8">
@@ -152,7 +152,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{produto.unidadeComercial}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{unidadeComercial}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="#,##0.00">
 				<reportElement key="textField" positionType="Float" x="141" y="0" width="28" height="8" uuid="c1294612-1d8a-48c6-939d-744c233fbdc4">
@@ -161,7 +161,7 @@
 				<textElement textAlignment="Right" verticalAlignment="Top" markup="none">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new BigDecimal($F{produto.valorUnitario})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new BigDecimal($F{valorUnitario})]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

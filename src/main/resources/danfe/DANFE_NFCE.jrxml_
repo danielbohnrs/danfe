@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.4.final using JasperReports Library version 6.0.4  -->
-<!-- 2018-11-01T14:00:23 -->
+<!-- 2018-10-31T11:56:01 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DANFE_NFCE" pageWidth="226" pageHeight="1000" columnWidth="226" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" isIgnorePagination="true" uuid="f2ad8431-eb6a-4415-9a7a-8bcb81e49e5d">
 	<property name="ireport.zoom" value="7.0"/>
 	<property name="ireport.x" value="0"/>
@@ -12,6 +12,7 @@
 	<import value="java.util.*"/>
 	<import value="net.sf.jasperreports.engine.data.*"/>
 	<parameter name="PAGAMENTOS" class="java.util.Collection"/>
+	<parameter name="SUBREL" class="java.io.InputStream"/>
 	<parameter name="SUBREL_PAGAMENTOS" class="java.io.InputStream"/>
 	<parameter name="URL_CONSULTA" class="java.lang.String"/>
 	<parameter name="QR_CODE" class="java.awt.Image"/>
@@ -439,83 +440,13 @@
 		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/ide/tpEmis]]></fieldDescription>
 	</field>
 	<variable name="ACRESCIMOS" class="java.math.BigDecimal">
-		<variableExpression><![CDATA[new BigDecimal($F{ImpValorFrete}).add(
-new BigDecimal($F{ImpValorSeguro})).add(
-new BigDecimal($F{ImpValorOutro})).subtract(
-new BigDecimal($F{ImpValorDesconto}))]]></variableExpression>
+		<variableExpression><![CDATA[new BigDecimal($F{ImpValorFrete}.replace(".", "").replace(",", ".")).add(
+new BigDecimal($F{ImpValorSeguro}.replace(".", "").replace(",", "."))).add(
+new BigDecimal($F{ImpValorOutro}.replace(".", "").replace(",", "."))).subtract(
+new BigDecimal($F{ImpValorDesconto}.replace(".", "").replace(",", ".")))]]></variableExpression>
 		<initialValueExpression><![CDATA[BigDecimal.ZERO]]></initialValueExpression>
 	</variable>
-	<variable name="totalItens" class="java.lang.Integer" incrementType="Group" incrementGroup="produtos" calculation="Sum">
-		<variableExpression><![CDATA[  $V{produtos_COUNT} == 1 ? ($V{totalItens} + 1) : $V{totalItens}]]></variableExpression>
-		<initialValueExpression><![CDATA[0]]></initialValueExpression>
-	</variable>
-	<group name="produtos" isReprintHeaderOnEachPage="true">
-		<groupHeader>
-			<band height="9">
-				<staticText>
-					<reportElement x="8" y="1" width="21" height="8" uuid="8bd4fd85-ec6e-43f0-b07a-83e916201ff2">
-						<property name="local_mesure_unitheight" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="local_mesure_unitwidth" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<textElement verticalAlignment="Middle">
-						<font fontName="Arial Narrow" size="6" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Cód]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="29" y="1" width="98" height="8" uuid="7de747a5-4b82-4f91-9aaf-7548da8ec2b8">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement verticalAlignment="Middle">
-						<font fontName="Arial Narrow" size="6" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Descrição]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="127" y="1" width="13" height="8" uuid="dab9d2a3-3c5b-4905-8da4-6f799f4b0fa6">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="local_mesure_unitwidth" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial Narrow" size="6" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Qtd.]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="140" y="1" width="10" height="8" uuid="20f2abed-0915-454b-b6c2-e3b58dedbecd">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-						<property name="local_mesure_unitwidth" value="pixel"/>
-						<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Arial Narrow" size="6" isBold="true"/>
-					</textElement>
-					<text><![CDATA[UN]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="150" y="1" width="28" height="8" uuid="6dbc78eb-dc34-4596-8d66-be76551f645e">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial Narrow" size="6" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Vl Unit]]></text>
-				</staticText>
-				<staticText>
-					<reportElement x="178" y="1" width="31" height="8" uuid="a3b009c7-03e8-41a9-8135-4e1fc7ce5a37">
-						<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					</reportElement>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font fontName="Arial Narrow" size="6" isBold="true"/>
-					</textElement>
-					<text><![CDATA[Vl Total]]></text>
-				</staticText>
-			</band>
-		</groupHeader>
-	</group>
+	<variable name="totalItens" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -577,85 +508,144 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="9" splitType="Prevent">
-			<property name="local_mesure_unitheight" value="pixel"/>
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
-			<textField isStretchWithOverflow="true">
-				<reportElement key="textField" positionType="Float" x="8" y="0" width="21" height="8" uuid="c4ed4d2f-c42d-44ef-98b9-aa78be39fc8c">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="local_mesure_unitwidth" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="local_mesure_unitx" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Top" markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="false"/>
+		<band height="117" splitType="Prevent">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="8" y="91" width="201" height="10" isRemoveLineWhenBlank="true" uuid="24e3e04f-3277-4682-99e3-1858346f2d67"/>
+				<textElement textAlignment="Center" markup="html">
+					<font fontName="Arial Narrow" size="7" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ProdCodigo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<b>Consulte pela Chave de Acesso em</b> " + $P{URL_CONSULTA}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement key="textField" positionType="Float" x="29" y="0" width="98" height="8" uuid="a6b2e2ad-0f80-4382-89b8-ef53c3577488">
+				<reportElement positionType="Float" x="8" y="101" width="201" height="10" uuid="2ad81d22-19eb-4742-89f8-a6fbe97ac6c2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" size="7" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CHAVE_ACESSO_FORMATADA}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement positionType="Float" x="8" y="56" width="201" height="11" uuid="abe336d3-28b5-4818-bce8-70ee6efab2ad"/>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($P{PAGAMENTOS})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREL_PAGAMENTOS}]]></subreportExpression>
+			</subreport>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement key="textField" positionType="Float" x="146" y="34" width="63" height="8" uuid="52a05c6a-73e3-438d-aefb-38413c998dae">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<textElement verticalAlignment="Top" markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="false"/>
+				<textElement textAlignment="Right" markup="none">
+					<font fontName="Arial Narrow" size="6" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{DescProduto}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[Double.parseDouble($F{ImpValorNF})]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement key="textField" positionType="Float" x="127" y="0" width="13" height="8" uuid="b26a7917-4218-4731-b536-fab421d71cf2">
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="146" y="26" width="63" height="8" isRemoveLineWhenBlank="true" uuid="96e065a7-d841-4794-afe8-661bc6024992">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="local_mesure_unitwidth" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{ACRESCIMOS}.signum() != 0]]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Right" verticalAlignment="Top" markup="none">
+				<textElement textAlignment="Right">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ProdQtd}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{ACRESCIMOS}]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" pattern="">
-				<reportElement key="textField" positionType="Float" x="140" y="0" width="10" height="8" uuid="33e7f442-1a98-4b6d-8267-3283f7a51144">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<property name="local_mesure_unitwidth" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ProdUndMedida}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="#,##0.00">
-				<reportElement key="textField" positionType="Float" x="150" y="0" width="28" height="8" uuid="8100cd95-7b18-4d15-bdfb-50ff15edbbb6">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Right" verticalAlignment="Top" markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new BigDecimal($F{ProdValorUnit})]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" pattern="#,##0.00">
-				<reportElement key="textField" positionType="Float" x="178" y="0" width="31" height="8" uuid="17792e6c-dc0f-4dce-bff2-d051ecb8af7f">
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="8" y="18" width="110" height="8" uuid="c7129f1b-3655-410c-95fb-0e4bb0a94fdb">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Right" verticalAlignment="Top" markup="none">
+				<textElement markup="none">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new BigDecimal($F{ProdValorTotal})]]></textFieldExpression>
+				<text><![CDATA[Qtde. total de itens]]></text>
+			</staticText>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="146" y="18" width="63" height="8" uuid="3ab24ac5-b9a8-4cfc-abc3-c7a8b84c9cc8">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" markup="none">
+					<font fontName="Arial Narrow" size="6" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalItens}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="8" y="34" width="110" height="8" uuid="c9f98b94-3d4c-4dae-a139-6c97e1bb8c50">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Arial Narrow" size="6" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Valor a Pagar R$]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" positionType="Float" x="8" y="26" width="110" height="8" isRemoveLineWhenBlank="true" uuid="de9b850c-64b2-40c2-a275-62b6ba4f44ae">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$V{ACRESCIMOS}.signum() != 0]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Arial Narrow" size="6" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ACRESCIMOS}.signum() == 0 ? null :
+$V{ACRESCIMOS}.signum() < 0 ? "Desconto R$" : "Acréscimos R$"]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement positionType="Float" x="8" y="0" width="201" height="13" uuid="1027a0ad-c78a-4f6d-95ed-05989641e369"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)
+$P{REPORT_DATA_SOURCE}).dataSource("/nfeProc/NFe/infNFe/det")]]></dataSourceExpression>
+				<returnValue subreportVariable="REPORT_COUNT" toVariable="totalItens"/>
+				<subreportExpression><![CDATA[$P{SUBREL}]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="8" y="71" width="201" height="10" uuid="86284f34-d06b-493c-9718-e951dcfb1213">
+					<printWhenExpression><![CDATA[$F{NFeAmbiente}.equals("2")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial Narrow" size="6" isBold="false" isItalic="false"/>
+					<paragraph tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[EMITIDA EM AMBIENTE DE HOMOLOGAÇÃO–SEM VALOR FISCAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="8" y="81" width="201" height="10" isRemoveLineWhenBlank="true" uuid="a430d609-b1a4-41ff-9b4c-5d87cbfc21e0">
+					<printWhenExpression><![CDATA[(!$F{NFeTipoEmissao}.equals("1"))]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Arial Narrow" size="6" isBold="false" isItalic="false"/>
+					<paragraph tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[EMITIDA EM CONTINGÊNCIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="8" y="48" width="110" height="8" uuid="f1a27e00-8353-4275-aa7e-b16b7532348c">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement markup="none">
+					<font fontName="Arial Narrow" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[FORMA PAGAMENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="textField" positionType="Float" x="118" y="48" width="91" height="8" uuid="115cbec8-7411-476e-b0bc-3f10cb75e58d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" markup="none">
+					<font fontName="Arial Narrow" size="6" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[VALOR PAGO R$]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="236" splitType="Prevent">
+		<band height="197" splitType="Prevent">
 			<image scaleImage="RealSize" hAlign="Center" vAlign="Middle" onErrorType="Icon">
-				<reportElement key="image" positionType="Float" x="8" y="93" width="72" height="72" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="4e2dc02b-2c45-4b9b-80b2-1e8872c134d6">
+				<reportElement key="image" positionType="Float" x="8" y="0" width="72" height="72" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" uuid="4e2dc02b-2c45-4b9b-80b2-1e8872c134d6">
 					<property name="local_mesure_unitheight" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<imageExpression><![CDATA[$P{QR_CODE}]]></imageExpression>
 			</image>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" x="9" y="167" width="200" height="10" isRemoveLineWhenBlank="true" uuid="deca74d1-703e-4aab-8af6-6844947960e6"/>
+				<reportElement positionType="Float" x="9" y="74" width="200" height="10" isRemoveLineWhenBlank="true" uuid="deca74d1-703e-4aab-8af6-6844947960e6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
@@ -664,7 +654,7 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 ($F{ImpTotalTrib} == null ? "" : ("Valor Aproximado dos Tributos: R$ " + new DecimalFormat ("#,##0.00").format(Double.parseDouble($F{ImpTotalTrib}))))]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement key="line" positionType="Float" x="9" y="177" width="200" height="1" isRemoveLineWhenBlank="true" uuid="7f311dee-203d-4f34-a694-5a9a22beab6a">
+				<reportElement key="line" positionType="Float" x="9" y="84" width="200" height="1" isRemoveLineWhenBlank="true" uuid="7f311dee-203d-4f34-a694-5a9a22beab6a">
 					<printWhenExpression><![CDATA[$P{MOSTRAR_MSG_FINALIZACAO}]]></printWhenExpression>
 				</reportElement>
 				<graphicElement>
@@ -672,7 +662,7 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement key="textField" positionType="Float" x="9" y="189" width="200" height="26" isRemoveLineWhenBlank="true" uuid="a2b6af14-e98c-419d-a319-a304d1e30d2c">
+				<reportElement key="textField" positionType="Float" x="9" y="96" width="200" height="26" isRemoveLineWhenBlank="true" uuid="a2b6af14-e98c-419d-a319-a304d1e30d2c">
 					<printWhenExpression><![CDATA[$P{MOSTRAR_MSG_FINALIZACAO}]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
@@ -681,7 +671,7 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 				<textFieldExpression><![CDATA[".\n.\n."]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement key="line" positionType="Float" x="9" y="166" width="200" height="1" isRemoveLineWhenBlank="true" uuid="e9b9d243-de30-429a-80c4-25a191127073">
+				<reportElement key="line" positionType="Float" x="9" y="73" width="200" height="1" isRemoveLineWhenBlank="true" uuid="e9b9d243-de30-429a-80c4-25a191127073">
 					<printWhenExpression><![CDATA[$P{MOSTRAR_MSG_FINALIZACAO}]]></printWhenExpression>
 				</reportElement>
 				<graphicElement>
@@ -689,7 +679,7 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement key="textField" positionType="Float" x="9" y="178" width="200" height="10" isRemoveLineWhenBlank="true" uuid="1946bde5-0069-49eb-8a22-b436875e80bd">
+				<reportElement key="textField" positionType="Float" x="9" y="85" width="200" height="10" isRemoveLineWhenBlank="true" uuid="1946bde5-0069-49eb-8a22-b436875e80bd">
 					<printWhenExpression><![CDATA[$P{MOSTRAR_MSG_FINALIZACAO}]]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
@@ -698,21 +688,21 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 				<text><![CDATA[Fim da DANF-e]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH:mm:ss">
-				<reportElement positionType="Float" x="134" y="133" width="74" height="10" uuid="2db8c8a1-5e54-43e5-a53f-f44be5014d38"/>
+				<reportElement positionType="Float" x="140" y="40" width="69" height="10" uuid="2db8c8a1-5e54-43e5-a53f-f44be5014d38"/>
 				<textElement textAlignment="Left">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse($F{NFEdhRecebto}))]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH:mm:ss">
-				<reportElement positionType="Float" x="160" y="113" width="49" height="10" uuid="122ccd4f-85d4-42af-a142-9ddb8d4c605b"/>
+				<reportElement positionType="Float" x="160" y="20" width="49" height="10" uuid="122ccd4f-85d4-42af-a142-9ddb8d4c605b"/>
 				<textElement>
 					<font fontName="Arial Narrow" size="6" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse($F{NFeDataEmissao}))]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="80" y="113" width="22" height="10" uuid="ce1b0369-cf99-40e5-aaea-f297f7385144">
+				<reportElement positionType="Float" x="80" y="20" width="22" height="10" uuid="ce1b0369-cf99-40e5-aaea-f297f7385144">
 					<property name="local_mesure_unitwidth" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -722,7 +712,7 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 				<textFieldExpression><![CDATA["NFC-e nº"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="000000000">
-				<reportElement positionType="Float" x="102" y="113" width="29" height="10" uuid="e3d443e1-12db-45f9-a13b-ed50414e2c71">
+				<reportElement positionType="Float" x="102" y="20" width="29" height="10" uuid="e3d443e1-12db-45f9-a13b-ed50414e2c71">
 					<property name="local_mesure_unitwidth" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -732,7 +722,7 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 				<textFieldExpression><![CDATA[Double.parseDouble($F{NFeNumero})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="000">
-				<reportElement positionType="Float" x="148" y="113" width="12" height="10" uuid="c5ed75b1-22a5-4783-8595-6e3e4abff679">
+				<reportElement positionType="Float" x="148" y="20" width="12" height="10" uuid="c5ed75b1-22a5-4783-8595-6e3e4abff679">
 					<property name="local_mesure_unitwidth" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -742,24 +732,21 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 				<textFieldExpression><![CDATA[new DecimalFormat("000").format($F{NFeSerie})]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="80" y="123" width="129" height="10" uuid="f3e15e65-9d2d-410e-a1f8-0d04866e4154"/>
+				<reportElement positionType="Float" x="80" y="30" width="129" height="10" uuid="f3e15e65-9d2d-410e-a1f8-0d04866e4154"/>
 				<textElement textAlignment="Left" markup="html">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA["<b>Protocolo de Autorização:</b> "+$F{NFENumProtocolo}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="80" y="133" width="54" height="10" uuid="8ad56458-e563-4443-98be-e123de166a04">
-					<property name="local_mesure_unitwidth" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
+				<reportElement positionType="Float" x="80" y="40" width="60" height="10" uuid="8ad56458-e563-4443-98be-e123de166a04"/>
 				<textElement textAlignment="Left">
 					<font fontName="Arial Narrow" size="6" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Data de Autorização: "]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="80" y="93" width="129" height="20" uuid="0f7f9fa5-e04f-4fc4-bf20-47973e0e5e99"/>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="80" y="0" width="129" height="20" uuid="0f7f9fa5-e04f-4fc4-bf20-47973e0e5e99"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
@@ -771,132 +758,18 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 	
 	
 	: "<b>CONSUMIDOR NÃO IDENTIFICADO</b>"
-)]]></textFieldExpression>
+)
+
+
+ ]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="131" y="113" width="17" height="10" uuid="8ee4ed9e-310f-4ef8-a164-8784156c0a47"/>
+				<reportElement positionType="Float" x="131" y="20" width="17" height="10" uuid="8ee4ed9e-310f-4ef8-a164-8784156c0a47"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial Narrow" size="6" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Série"]]></textFieldExpression>
 			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="8" y="70" width="201" height="10" isRemoveLineWhenBlank="true" uuid="24e3e04f-3277-4682-99e3-1858346f2d67"/>
-				<textElement textAlignment="Center" markup="html">
-					<font fontName="Arial Narrow" size="7" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA["<b>Consulte pela Chave de Acesso em</b> " + $P{URL_CONSULTA}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="8" y="80" width="201" height="10" uuid="2ad81d22-19eb-4742-89f8-a6fbe97ac6c2"/>
-				<textElement textAlignment="Center">
-					<font fontName="Arial Narrow" size="7" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{CHAVE_ACESSO_FORMATADA}]]></textFieldExpression>
-			</textField>
-			<subreport>
-				<reportElement positionType="Float" x="8" y="38" width="201" height="11" uuid="abe336d3-28b5-4818-bce8-70ee6efab2ad"/>
-				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($P{PAGAMENTOS})]]></dataSourceExpression>
-				<subreportExpression><![CDATA[$P{SUBREL_PAGAMENTOS}]]></subreportExpression>
-			</subreport>
-			<textField pattern="#,##0.00" isBlankWhenNull="true">
-				<reportElement key="textField" positionType="Float" x="146" y="19" width="63" height="8" uuid="52a05c6a-73e3-438d-aefb-38413c998dae">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Right" markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[Double.parseDouble($F{ImpValorNF})]]></textFieldExpression>
-			</textField>
-			<textField pattern="#,##0.00" isBlankWhenNull="true">
-				<reportElement x="146" y="11" width="63" height="8" isRemoveLineWhenBlank="true" uuid="96e065a7-d841-4794-afe8-661bc6024992">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<printWhenExpression><![CDATA[$V{ACRESCIMOS}.signum() != 0]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Right">
-					<font fontName="Arial Narrow" size="6" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{ACRESCIMOS}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement key="textField" positionType="Float" x="8" y="3" width="110" height="8" uuid="c7129f1b-3655-410c-95fb-0e4bb0a94fdb">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Qtde. total de itens]]></text>
-			</staticText>
-			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
-				<reportElement key="textField" positionType="Float" x="146" y="3" width="63" height="8" uuid="3ab24ac5-b9a8-4cfc-abc3-c7a8b84c9cc8">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Right" markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{produtos_COUNT}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement key="textField" positionType="Float" x="8" y="19" width="110" height="8" uuid="c9f98b94-3d4c-4dae-a139-6c97e1bb8c50">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="true" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[Valor a Pagar R$]]></text>
-			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement key="textField" positionType="Float" x="8" y="11" width="110" height="8" isRemoveLineWhenBlank="true" uuid="de9b850c-64b2-40c2-a275-62b6ba4f44ae">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-					<printWhenExpression><![CDATA[$V{ACRESCIMOS}.signum() != 0]]></printWhenExpression>
-				</reportElement>
-				<textElement markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="false"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{ACRESCIMOS}.signum() == 0 ? null :
-$V{ACRESCIMOS}.signum() < 0 ? "Desconto R$" : "Acréscimos R$"]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement key="textField" positionType="Float" x="8" y="50" width="201" height="10" uuid="86284f34-d06b-493c-9718-e951dcfb1213">
-					<printWhenExpression><![CDATA[$F{NFeAmbiente}.equals("2")]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="false" isItalic="false"/>
-					<paragraph tabStopWidth="40"/>
-				</textElement>
-				<text><![CDATA[EMITIDA EM AMBIENTE DE HOMOLOGAÇÃO–SEM VALOR FISCAL]]></text>
-			</staticText>
-			<staticText>
-				<reportElement key="textField" positionType="Float" x="8" y="60" width="201" height="10" isRemoveLineWhenBlank="true" uuid="a430d609-b1a4-41ff-9b4c-5d87cbfc21e0">
-					<printWhenExpression><![CDATA[(!$F{NFeTipoEmissao}.equals("1"))]]></printWhenExpression>
-				</reportElement>
-				<textElement textAlignment="Center" markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="false" isItalic="false"/>
-					<paragraph tabStopWidth="40"/>
-				</textElement>
-				<text><![CDATA[EMITIDA EM CONTINGÊNCIA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement key="textField" positionType="Float" x="8" y="30" width="110" height="8" uuid="f1a27e00-8353-4275-aa7e-b16b7532348c">
-					<property name="local_mesure_unitheight" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="false" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[FORMA PAGAMENTO]]></text>
-			</staticText>
-			<staticText>
-				<reportElement key="textField" positionType="Float" x="118" y="30" width="91" height="8" uuid="115cbec8-7411-476e-b0bc-3f10cb75e58d">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Right" markup="none">
-					<font fontName="Arial Narrow" size="6" isBold="false" isUnderline="false"/>
-				</textElement>
-				<text><![CDATA[VALOR PAGO R$]]></text>
-			</staticText>
 		</band>
 	</pageFooter>
 </jasperReport>
