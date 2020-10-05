@@ -45,7 +45,7 @@ public class NFDanfeReport {
 	}
 
 	public byte[] gerarDanfeNFe(byte[] logoEmpresa) throws Exception {
-		return toPDF(createJasperPrintNFe(logoEmpresa));
+		return toPDF(createJasperPrintNFe(logoEmpresa,false));
 	}
 
 	private static byte[] toPDF(JasperPrint print) throws JRException {
@@ -53,13 +53,19 @@ public class NFDanfeReport {
 	}
 
 	public JasperPrint createJasperPrintNFe(byte[] logoEmpresa) throws IOException, ParserConfigurationException, SAXException, JRException {
-		try (InputStream in = NFDanfeReport.class.getClassLoader().getResourceAsStream("danfe/DANFE_NFE_RETRATO.jasper"); InputStream subDuplicatas = NFDanfeReport.class.getClassLoader().getResourceAsStream("danfe/DANFE_NFE_DUPLICATAS.jasper")) {
+		return createJasperPrintNFe(logoEmpresa,false);
+	}
+	public JasperPrint createJasperPrintNFe(byte[] logoEmpresa,boolean simplificado) throws IOException, ParserConfigurationException, SAXException, JRException {
+		try (   InputStream in = NFDanfeReport.class.getClassLoader().getResourceAsStream((simplificado?"danfe/DANFE_NFE_SIMPLIFICADA.jasper":"danfe/DANFE_NFE_RETRATO.jasper")); 
+				InputStream subDuplicatas = NFDanfeReport.class.getClassLoader().getResourceAsStream("danfe/DANFE_NFE_DUPLICATAS.jasper")
+			) {
 			final JRPropertiesUtil jrPropertiesUtil = JRPropertiesUtil.getInstance(DefaultJasperReportsContext.getInstance());
 			jrPropertiesUtil.setProperty("net.sf.jasperreports.xpath.executer.factory", "net.sf.jasperreports.engine.util.xml.JaxenXPathExecuterFactory");
 
 			Map<String, Object> parameters = new HashMap<>();
 			parameters.put("SUBREPORT_DUPLICATAS", subDuplicatas);
 			parameters.put("LOGO_EMPRESA", (logoEmpresa == null ? null : new ByteArrayInputStream(logoEmpresa)));
+			parameters.put("MOSTRAR_MSG_FINALIZACAO", true);
 
 			return JasperFillManager.fillReport(in, parameters, new JRXmlDataSource(convertStringXMl2DOM(), "/nfeProc/NFe/infNFe/det"));
 		}

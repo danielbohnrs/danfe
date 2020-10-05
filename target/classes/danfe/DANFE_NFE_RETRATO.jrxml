@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.4.final using JasperReports Library version 6.0.4  -->
-<!-- 2019-04-01T09:47:15 -->
+<!-- 2020-03-06T09:11:42 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nfe_danfe_retrato" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="25" bottomMargin="20" uuid="e21b08e1-6159-4fbb-98e9-6837ade5c1f3">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -424,6 +424,9 @@
 	</field>
 	<field name="vDup" class="java.lang.String">
 		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/cobr/dup/vDup]]></fieldDescription>
+	</field>
+	<field name="cStat" class="java.lang.String">
+		<fieldDescription><![CDATA[/nfeProc/protNFe/infProt/cStat]]></fieldDescription>
 	</field>
 	<group name="destinatario">
 		<groupExpression><![CDATA[$F{Destinatario}]]></groupExpression>
@@ -1347,7 +1350,7 @@ $P{REPORT_DATA_SOURCE}).dataSource("/nfeProc/NFe/infNFe/cobr/dup")]]></dataSourc
 		</groupHeader>
 	</group>
 	<background>
-		<band height="728" splitType="Stretch">
+		<band height="726">
 			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
 			<staticText>
 				<reportElement positionType="Float" x="0" y="600" width="554" height="58" forecolor="rgba(0, 0, 0, 0.19607843)" uuid="0fd476ad-d742-4ba0-b025-8bb32a9f0093">
@@ -1899,84 +1902,94 @@ $F{ChaveNFe}.substring(3, $F{ChaveNFe}.length()).substring(40, 44)]]></textField
 		</band>
 	</detail>
 	<lastPageFooter>
-		<band height="90">
+		<band height="149">
 			<property name="com.jaspersoft.studio.unit.height" value="cm"/>
 			<rectangle>
-				<reportElement x="0" y="9" width="555" height="20" uuid="4d323bc7-97c8-466b-bfb4-9ef776c19dc8"/>
+				<reportElement x="0" y="68" width="555" height="20" uuid="4d323bc7-97c8-466b-bfb4-9ef776c19dc8"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="3" y="11" width="74" height="7" uuid="170f4fbd-ccb2-4496-8346-178e7c958ba8"/>
+				<reportElement x="3" y="70" width="74" height="7" uuid="170f4fbd-ccb2-4496-8346-178e7c958ba8"/>
 				<textElement>
 					<font fontName="Times New Roman" size="5" isBold="false"/>
 				</textElement>
 				<text><![CDATA[INSCRIÇÃO MUNICIPAL]]></text>
 			</staticText>
 			<line>
-				<reportElement x="115" y="9" width="1" height="20" uuid="c33eca33-c998-47ed-923c-33d1bcc1585c"/>
+				<reportElement x="115" y="68" width="1" height="20" uuid="c33eca33-c998-47ed-923c-33d1bcc1585c"/>
 			</line>
 			<staticText>
-				<reportElement x="118" y="11" width="89" height="7" uuid="bacec25a-d34d-4e08-81a8-67ec9f1d5cc6"/>
+				<reportElement x="118" y="70" width="89" height="7" uuid="bacec25a-d34d-4e08-81a8-67ec9f1d5cc6"/>
 				<textElement>
 					<font fontName="Times New Roman" size="5" isBold="false"/>
 				</textElement>
 				<text><![CDATA[VALOR TOTAL DOS SERVIÇOS]]></text>
 			</staticText>
 			<line>
-				<reportElement x="281" y="9" width="1" height="20" uuid="d7720f67-3cac-4002-8664-584b90c97089"/>
+				<reportElement x="281" y="68" width="1" height="20" uuid="d7720f67-3cac-4002-8664-584b90c97089"/>
 			</line>
 			<staticText>
-				<reportElement x="284" y="11" width="89" height="7" uuid="3e0521d2-317b-4772-860c-073c193e928c"/>
+				<reportElement x="284" y="70" width="89" height="7" uuid="3e0521d2-317b-4772-860c-073c193e928c"/>
 				<textElement>
 					<font fontName="Times New Roman" size="5" isBold="false"/>
 				</textElement>
 				<text><![CDATA[BASE DE CÁLCULO DO ISSQN]]></text>
 			</staticText>
 			<line>
-				<reportElement x="422" y="9" width="1" height="20" uuid="aafb21ad-7a48-468e-9974-4c3b35923a3f"/>
+				<reportElement x="422" y="68" width="1" height="20" uuid="aafb21ad-7a48-468e-9974-4c3b35923a3f"/>
 			</line>
 			<staticText>
-				<reportElement x="426" y="11" width="89" height="7" uuid="691b6649-4513-45f7-949c-e309e62fcff9"/>
+				<reportElement x="426" y="70" width="89" height="7" uuid="691b6649-4513-45f7-949c-e309e62fcff9"/>
 				<textElement>
 					<font fontName="Times New Roman" size="5" isBold="false"/>
 				</textElement>
 				<text><![CDATA[VALOR DO ISSQN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="0" width="108" height="9" uuid="b6e686e0-feb7-4ff9-822b-d76549d3240b"/>
+				<reportElement x="0" y="59" width="108" height="9" uuid="b6e686e0-feb7-4ff9-822b-d76549d3240b"/>
 				<textElement>
 					<font fontName="Times New Roman" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CÁLCULO DO ISSQN]]></text>
 			</staticText>
 			<rectangle>
-				<reportElement x="0" y="39" width="555" height="50" uuid="e4ec807d-fa8e-466b-b6fb-9824026916a6"/>
+				<reportElement x="0" y="98" width="555" height="50" uuid="e4ec807d-fa8e-466b-b6fb-9824026916a6"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="0" y="30" width="108" height="9" uuid="a5ecc077-d230-4b31-a222-fc23e632d9da"/>
+				<reportElement x="0" y="89" width="108" height="9" uuid="a5ecc077-d230-4b31-a222-fc23e632d9da"/>
 				<textElement>
 					<font fontName="Times New Roman" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DADOS ADICIONAIS]]></text>
 			</staticText>
 			<line>
-				<reportElement x="399" y="40" width="1" height="50" uuid="c187a10c-660e-48f0-94d9-6d791ad49993"/>
+				<reportElement x="399" y="99" width="1" height="50" uuid="c187a10c-660e-48f0-94d9-6d791ad49993"/>
 			</line>
 			<staticText>
-				<reportElement x="403" y="41" width="89" height="7" uuid="0b1dc43c-6a23-4da4-9454-fd504662f628"/>
+				<reportElement x="403" y="100" width="89" height="7" uuid="0b1dc43c-6a23-4da4-9454-fd504662f628"/>
 				<textElement>
 					<font fontName="Times New Roman" size="6" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RESERVADO AO FISCO]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="2" y="41" width="393" height="44" uuid="d790d68b-1342-481f-bb5d-87fa2cb3c287"/>
+				<reportElement x="2" y="100" width="393" height="44" uuid="d790d68b-1342-481f-bb5d-87fa2cb3c287"/>
 				<textElement>
 					<font fontName="Times New Roman" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{NFeInfAdicionais} == null ? "" : $F{NFeInfAdicionais}) + "\n" +
-($F{NFeInfAdFisco} == null ? "" : $F{NFeInfAdFisco}) + "\n" +
-($F{ImpTotalTrib} == null ? "" : ("Valor Aproximado dos Tributos: R$ " + new DecimalFormat ("#,##0.00").format(Double.parseDouble($F{ImpTotalTrib}))))]]></textFieldExpression>
+($F{NFeInfAdFisco} == null ? "" : $F{NFeInfAdFisco}) + "\n"]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="58" forecolor="rgba(0, 0, 0, 0.19607843)" uuid="3541944e-77e0-4bed-bb60-63755160f506">
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<printWhenExpression><![CDATA[$F{cStat}.equals("101")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="50"/>
+				</textElement>
+				<text><![CDATA[NFe CANCELADA]]></text>
+			</staticText>
 		</band>
 	</lastPageFooter>
 </jasperReport>

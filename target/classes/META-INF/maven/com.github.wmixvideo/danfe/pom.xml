@@ -30,6 +30,43 @@
 					<groupId>eclipse</groupId>
 					<artifactId>jdtcore</artifactId>
 				</exclusion>
+				<!-- DJB-04/04/2019 excluindo o spring, que nao precisa -->
+				<exclusion>
+					<groupId>org.springframework</groupId>
+            		<artifactId>spring-aop</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+            		<artifactId>spring-asm</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+            		<artifactId>spring-beans</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+            		<artifactId>spring-context</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+            		<artifactId>spring-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+            		<artifactId>spring-expression</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+            		<artifactId>spring-web</artifactId>
+				</exclusion>
+				<exclusion><!-- DJB-04/04/2019 -->
+					<groupId>org.springframework</groupId>
+            		<artifactId>spring-parent</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.aspectj</groupId>
+            		<artifactId>aspectjrt</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 
