@@ -1,3 +1,5 @@
+# Dependência: https://github.com/wmixvideo/nfe
+
 # danfe
 
 Exemplo de uso:
