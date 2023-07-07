@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.4.final using JasperReports Library version 6.0.4  -->
-<!-- 2018-11-01T14:00:23 -->
+<!-- 2022-03-03T22:15:38 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DANFE_NFCE" pageWidth="226" pageHeight="1000" columnWidth="226" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" isIgnorePagination="true" uuid="f2ad8431-eb6a-4415-9a7a-8bcb81e49e5d">
 	<property name="ireport.zoom" value="7.0"/>
 	<property name="ireport.x" value="0"/>
@@ -21,9 +21,6 @@
 	<parameter name="LOGO_EMPRESA" class="java.io.InputStream" isForPrompting="false">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<field name="DescProduto" class="java.lang.String">
-		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/det/prod/xProd]]></fieldDescription>
-	</field>
 	<field name="EmitenteNFe" class="java.lang.String">
 		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/emit/xNome]]></fieldDescription>
 	</field>
@@ -83,6 +80,9 @@
 	</field>
 	<field name="DestCNPJ" class="java.lang.String">
 		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/dest/CNPJ]]></fieldDescription>
+	</field>
+	<field name="DestCPF" class="java.lang.String">
+		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/dest/CPF]]></fieldDescription>
 	</field>
 	<field name="DestNomeRazao" class="java.lang.String">
 		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/dest/xNome]]></fieldDescription>
@@ -372,9 +372,6 @@
 	<field name="ProdCSOSN900" class="java.lang.String">
 		<fieldDescription><![CDATA[imposto/ICMS/ICMSSN900/CSOSN]]></fieldDescription>
 	</field>
-	<field name="DestCPF" class="java.lang.String">
-		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/dest/CPF]]></fieldDescription>
-	</field>
 	<field name="ProdOrig00" class="java.lang.String">
 		<fieldDescription><![CDATA[imposto/ICMS/ICMS00/orig]]></fieldDescription>
 	</field>
@@ -446,7 +443,7 @@ new BigDecimal($F{ImpValorDesconto}))]]></variableExpression>
 		<initialValueExpression><![CDATA[BigDecimal.ZERO]]></initialValueExpression>
 	</variable>
 	<variable name="totalItens" class="java.lang.Integer" incrementType="Group" incrementGroup="produtos" calculation="Sum">
-		<variableExpression><![CDATA[  $V{produtos_COUNT} == 1 ? ($V{totalItens} + 1) : $V{totalItens}]]></variableExpression>
+		<variableExpression><![CDATA[$V{produtos_COUNT} == 1 ? ($V{totalItens} + 1) : $V{totalItens}]]></variableExpression>
 		<initialValueExpression><![CDATA[0]]></initialValueExpression>
 	</variable>
 	<group name="produtos" isReprintHeaderOnEachPage="true">
@@ -600,7 +597,7 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 				<textElement verticalAlignment="Top" markup="none">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{DescProduto}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ProdDescricao}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="">
 				<reportElement key="textField" positionType="Float" x="127" y="0" width="13" height="8" uuid="b26a7917-4218-4731-b536-fab421d71cf2">
@@ -763,11 +760,11 @@ $F{EmitLogradouro}+", "+$F{EmitNum}+ ", "+$F{EmitBairro}+", "+$F{EmitMunicipio}+
 				<textElement textAlignment="Left" verticalAlignment="Middle" markup="html">
 					<font fontName="Arial Narrow" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[( ($F{DestCNPJ} != null && $F{DestCPF} != null && $F{DestLogradouro} != null) ?
+				<textFieldExpression><![CDATA[( (($F{DestCNPJ} != null || $F{DestCPF} != null) && $F{DestLogradouro} != null) ?
 	
 	($F{DestCNPJ} != null) ? ("<b>CONSUMIDOR</b> CNPJ: "+$F{DestCNPJ}.substring(0, 2) + "." + $F{DestCNPJ}.substring(2, 5) + "." + $F{DestCNPJ}.substring(5, 8) + "/" + $F{DestCNPJ}.substring(8, 12) + "-" + $F{DestCNPJ}.substring(12, 14)) : ("<b>CONSUMIDOR</b> CPF: "+$F{DestCPF}.substring(0, 3) + "." + $F{DestCPF}.substring(3, 6) + "." + $F{DestCPF}.substring(6, 9) + "-" + $F{DestCPF}.substring(9, 11)) 
 	+
-	($F{DestLogradouro}+", "+$F{DestNumero}+" "+$F{DestComplemento} +$F{DestBairro}+", "+$F{DestMunicipio}+" - "+$F{DestUF} +"CEP: "+$F{DestCEP}) 
+	($F{DestLogradouro}+", "+$F{DestNumero}+" "+$F{DestComplemento}!=null?$F{DestComplemento}:"" +$F{DestBairro}+", "+$F{DestMunicipio}+" - "+$F{DestUF} +" CEP: "+$F{DestCEP}  ) 
 	
 	
 	: "<b>CONSUMIDOR NÃO IDENTIFICADO</b>"

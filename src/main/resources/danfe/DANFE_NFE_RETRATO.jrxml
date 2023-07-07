@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.4.final using JasperReports Library version 6.0.4  -->
-<!-- 2020-03-06T09:11:42 -->
+<!-- 2023-07-06T22:14:42 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nfe_danfe_retrato" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="25" bottomMargin="20" uuid="e21b08e1-6159-4fbb-98e9-6837ade5c1f3">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -189,7 +189,7 @@
 		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/infAdic/infCpl]]></fieldDescription>
 	</field>
 	<field name="ProdCodigo" class="java.lang.String">
-		<fieldDescription><![CDATA[prod/cProd]]></fieldDescription>
+		<fieldDescription><![CDATA[prod/cEAN]]></fieldDescription>
 	</field>
 	<field name="ProdDescricao" class="java.lang.String">
 		<fieldDescription><![CDATA[prod/xProd]]></fieldDescription>
@@ -1722,43 +1722,84 @@ $F{ChaveNFe}.substring(3, $F{ChaveNFe}.length()).substring(40, 44)]]></textField
 	<detail>
 		<band height="15" splitType="Stretch">
 			<rectangle>
-				<reportElement x="0" y="-1" width="555" height="15" uuid="40507d31-631d-4f74-a4e8-e51c52f305f4"/>
+				<reportElement x="0" y="0" width="555" height="15" uuid="40507d31-631d-4f74-a4e8-e51c52f305f4">
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 			</rectangle>
 			<line>
-				<reportElement x="39" y="-2" width="1" height="16" uuid="191668a9-266e-494a-b04e-177cf4da0bf8"/>
+				<reportElement x="39" y="0" width="1" height="14" uuid="191668a9-266e-494a-b04e-177cf4da0bf8">
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<line>
-				<reportElement x="182" y="-2" width="1" height="16" uuid="6fba8399-56d2-4207-b29c-6cc3cc7d95e1"/>
+				<reportElement x="182" y="0" width="1" height="14" uuid="6fba8399-56d2-4207-b29c-6cc3cc7d95e1">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<line>
-				<reportElement x="219" y="-2" width="1" height="16" uuid="5605235c-8942-4dad-ae34-5543b1a19cc9"/>
+				<reportElement x="219" y="0" width="1" height="14" uuid="5605235c-8942-4dad-ae34-5543b1a19cc9">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<line>
-				<reportElement x="237" y="-2" width="1" height="16" uuid="9c55599c-f854-4228-a2ec-a44e023f6d83"/>
+				<reportElement x="237" y="0" width="1" height="14" uuid="9c55599c-f854-4228-a2ec-a44e023f6d83">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<line>
-				<reportElement x="259" y="-2" width="1" height="16" uuid="8f9fd756-085e-47d5-85b5-d3f51fec447b"/>
+				<reportElement x="259" y="0" width="1" height="14" uuid="8f9fd756-085e-47d5-85b5-d3f51fec447b">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<line>
-				<reportElement x="280" y="-2" width="1" height="16" uuid="70860f60-6307-46d6-91e8-45923e68fed0"/>
+				<reportElement x="280" y="0" width="1" height="14" uuid="70860f60-6307-46d6-91e8-45923e68fed0">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<line>
-				<reportElement x="314" y="-2" width="1" height="16" uuid="dbb39437-3db2-4b0c-b073-da89cdfe2a1a"/>
+				<reportElement x="314" y="0" width="1" height="14" uuid="dbb39437-3db2-4b0c-b073-da89cdfe2a1a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<line>
-				<reportElement x="352" y="-2" width="1" height="16" uuid="f7bb5f8c-0d57-43f6-bc02-f1e531c09045"/>
+				<reportElement x="352" y="0" width="1" height="14" uuid="f7bb5f8c-0d57-43f6-bc02-f1e531c09045">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<line>
-				<reportElement x="406" y="-2" width="1" height="16" uuid="82532925-261a-4c70-859c-96c08a286268"/>
+				<reportElement x="406" y="0" width="1" height="14" uuid="82532925-261a-4c70-859c-96c08a286268">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<line>
-				<reportElement x="443" y="-2" width="1" height="16" uuid="30dbce65-d083-4770-8b79-dff3174fa66b"/>
+				<reportElement x="443" y="0" width="1" height="14" uuid="30dbce65-d083-4770-8b79-dff3174fa66b">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<line>
-				<reportElement x="480" y="-2" width="1" height="16" uuid="8223a8cb-c6e4-4777-9fa6-f99287feb7a8"/>
+				<reportElement x="480" y="0" width="1" height="14" uuid="8223a8cb-c6e4-4777-9fa6-f99287feb7a8">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<line>
-				<reportElement x="515" y="-2" width="1" height="16" uuid="b7e16865-7670-4f12-af9c-b64f15606fd8"/>
+				<reportElement x="515" y="0" width="1" height="14" uuid="b7e16865-7670-4f12-af9c-b64f15606fd8">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<textField isBlankWhenNull="true">
 				<reportElement x="0" y="0" width="40" height="14" uuid="01d7f6c6-3e60-4a32-aa37-2ca7cffd35a0"/>
@@ -1875,7 +1916,12 @@ $F{ChaveNFe}.substring(3, $F{ChaveNFe}.length()).substring(40, 44)]]></textField
 ($F{ProdValorICMS90} != null) ? Double.parseDouble($F{ProdValorICMS90}) : 0.0]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="536" y="-2" width="1" height="16" uuid="cbba167a-ce64-4807-aa7a-7f4bcfa55e23"/>
+				<reportElement x="536" y="0" width="1" height="14" uuid="cbba167a-ce64-4807-aa7a-7f4bcfa55e23">
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 			</line>
 			<textField pattern="#,##0.00" isBlankWhenNull="false">
 				<reportElement x="516" y="0" width="19" height="14" uuid="8506541e-eda2-4a5d-bd51-b3651128282e"/>
