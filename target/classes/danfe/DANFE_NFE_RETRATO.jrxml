@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.0.4.final using JasperReports Library version 6.0.4  -->
-<!-- 2023-07-06T22:14:42 -->
+<!-- 2024-03-04T21:38:51 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nfe_danfe_retrato" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="25" bottomMargin="20" uuid="e21b08e1-6159-4fbb-98e9-6837ade5c1f3">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -257,6 +257,9 @@
 	<field name="ProdCST90" class="java.lang.String">
 		<fieldDescription><![CDATA[imposto/ICMS/ICMS90/CST]]></fieldDescription>
 	</field>
+	<field name="ProdCST900" class="java.lang.String">
+		<fieldDescription><![CDATA[imposto/ICMS/ICMSSN900/CSOSN]]></fieldDescription>
+	</field>
 	<field name="ProdBCICMS10" class="java.lang.String">
 		<fieldDescription><![CDATA[imposto/ICMS/ICMS10/vBC]]></fieldDescription>
 	</field>
@@ -280,6 +283,9 @@
 	</field>
 	<field name="ProdBCICMS90" class="java.lang.String">
 		<fieldDescription><![CDATA[imposto/ICMS/ICMS90/vBC]]></fieldDescription>
+	</field>
+	<field name="ProdBCICMS900" class="java.lang.String">
+		<fieldDescription><![CDATA[imposto/ICMS/ICMSSN900/vBC]]></fieldDescription>
 	</field>
 	<field name="ProdValorICMS10" class="java.lang.String">
 		<fieldDescription><![CDATA[imposto/ICMS/ICMS10/vICMS]]></fieldDescription>
@@ -305,6 +311,9 @@
 	<field name="ProdValorICMS90" class="java.lang.String">
 		<fieldDescription><![CDATA[imposto/ICMS/ICMS90/vICMS]]></fieldDescription>
 	</field>
+	<field name="ProdValorICMS900" class="java.lang.String">
+		<fieldDescription><![CDATA[imposto/ICMS/ICMSSN900/vICMS]]></fieldDescription>
+	</field>
 	<field name="ProdAliqICMS10" class="java.lang.String">
 		<fieldDescription><![CDATA[imposto/ICMS/ICMS10/pICMS]]></fieldDescription>
 	</field>
@@ -328,6 +337,9 @@
 	</field>
 	<field name="ProdAliqICMS90" class="java.lang.String">
 		<fieldDescription><![CDATA[imposto/ICMS/ICMS90/pICMS]]></fieldDescription>
+	</field>
+	<field name="ProdAliqICMS900" class="java.lang.String">
+		<fieldDescription><![CDATA[imposto/ICMS/ICMSSN900/pICMS]]></fieldDescription>
 	</field>
 	<field name="TranspModFrete" class="java.lang.String">
 		<fieldDescription><![CDATA[/nfeProc/NFe/infNFe/transp/modFrete]]></fieldDescription>
@@ -1891,7 +1903,8 @@ $F{ChaveNFe}.substring(3, $F{ChaveNFe}.length()).substring(40, 44)]]></textField
 ($F{ProdBCICMS51} != null) ? Double.parseDouble($F{ProdBCICMS51}) :
 ($F{ProdBCICMS60} != null) ? Double.parseDouble($F{ProdBCICMS60}) :
 ($F{ProdBCICMS70} != null) ? Double.parseDouble($F{ProdBCICMS70}) :
-($F{ProdBCICMS90} != null) ? Double.parseDouble($F{ProdBCICMS90}) : 0.0]]></textFieldExpression>
+($F{ProdBCICMS90} != null) ? Double.parseDouble($F{ProdBCICMS90}) :
+($F{ProdBCICMS900} != null) ? Double.parseDouble($F{ProdBCICMS900}) : 0.0]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00" isBlankWhenNull="false">
 				<reportElement x="481" y="0" width="33" height="14" uuid="da39ddfc-0828-43c0-9a0d-b56735f85bc2"/>
@@ -1913,7 +1926,8 @@ $F{ChaveNFe}.substring(3, $F{ChaveNFe}.length()).substring(40, 44)]]></textField
 ($F{ProdValorICMS51} != null) ? Double.parseDouble($F{ProdValorICMS51}) :
 ($F{ProdValorICMS60} != null) ? Double.parseDouble($F{ProdValorICMS60}) :
 ($F{ProdValorICMS70} != null) ? Double.parseDouble($F{ProdValorICMS70}) :
-($F{ProdValorICMS90} != null) ? Double.parseDouble($F{ProdValorICMS90}) : 0.0]]></textFieldExpression>
+($F{ProdValorICMS90} != null) ? Double.parseDouble($F{ProdValorICMS90}) :
+($F{ProdValorICMS900} != null) ? Double.parseDouble($F{ProdValorICMS900}) : 0.0]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="536" y="0" width="1" height="14" uuid="cbba167a-ce64-4807-aa7a-7f4bcfa55e23">
@@ -1936,7 +1950,8 @@ $F{ChaveNFe}.substring(3, $F{ChaveNFe}.length()).substring(40, 44)]]></textField
 ($F{ProdAliqICMS51} != null) ? Double.parseDouble($F{ProdAliqICMS51}) :
 ($F{ProdAliqICMS60} != null) ? Double.parseDouble($F{ProdAliqICMS60}) :
 ($F{ProdAliqICMS70} != null) ? Double.parseDouble($F{ProdAliqICMS70}) :
-($F{ProdAliqICMS90} != null) ? Double.parseDouble($F{ProdAliqICMS90}) : 0.00]]></textFieldExpression>
+($F{ProdAliqICMS90} != null) ? Double.parseDouble($F{ProdAliqICMS90}) :
+($F{ProdAliqICMS900} != null) ? Double.parseDouble($F{ProdAliqICMS900}) : 0.00]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00" isBlankWhenNull="false">
 				<reportElement x="537" y="0" width="17" height="14" uuid="72748931-c862-4f3d-86fa-9d30b2e3f293"/>
